@@ -4,9 +4,12 @@ import React from "react";
 import { loadDecks, setDecks } from "./actions/deckActions";
 import { Constants } from "expo";
 import { blue } from "./utils/colors";
+import ListDecks from "./components/ListDecks";
+import DeckDetail from "./components/DeckDetail";
 import { connect } from 'react-redux';
 import { Provider } from 'react-redux';
 import configureStore from "./store/configureStore";
+import RootNavigator from "./navigation/RootNavigator";
 
 const store = configureStore()
 store.dispatch(setDecks())
@@ -27,6 +30,7 @@ export default class App extends React.Component {
       <Provider store={store}>
         <View style={styles.container}>
           <AStatusBar backgroundColor={blue} barStyle="light-content" />
+          <RootNavigator />
         </View>
         </Provider>
 
