@@ -21,21 +21,20 @@ export function loadDecks() {
   };
 }
 
-export function addDeckSuccess(decks) {
+export function addDeckSuccess(newDeck) {
   return {
     type: types.ADD_DECK_SUCCESS,
-    decks
+    newDeck
   };
 }
 
 export function addDeck(title) {
+  const newDeck = {title, questions:[]}
   return function(dispatch) {
     return addDeckAPI(title)
-      .then(decks => {
-        console.log('from api')
-        console.log(decks)
-        dispatch(addDeckSuccess(decks));
-      })
+      .then(
+        dispatch(addDeckSuccess(newDeck))
+      )
       .catch(error => {
         throw error;
       });

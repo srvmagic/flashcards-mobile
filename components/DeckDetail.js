@@ -13,9 +13,9 @@ import { style } from "../utils/style";
 export default class DeckDetail extends Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <View style={style.deckView}>
-          <Text style={style.headerText}>
+      <View style={style.container}>
+        <View style={style.quizLayout}>
+          <Text style={style.quizFontStyle}>
             {this.props.navigation.state.params.title}
           </Text>
           <Text style={style.detailText}>{`${
@@ -27,9 +27,9 @@ export default class DeckDetail extends Component {
                 title: this.props.navigation.state.params.title
               })
             }
-            style={style.addCardButton}
+            style={style.aButton}
           >
-            <Text>Add Card</Text>
+            <Text style={style.quizText}>Add Card</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -38,9 +38,10 @@ export default class DeckDetail extends Component {
                 questions: this.props.navigation.state.params.questions
               })
             }
-            style={style.startQuizButton}
+            style={style.bButton}
           >
-            <Text>Start Quiz</Text>
+           <Text style={style.quizText}>Start Quiz</Text>
+           
           </TouchableOpacity>          
         </View>
       </View>

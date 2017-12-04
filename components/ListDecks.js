@@ -20,9 +20,20 @@ class ListDecks extends Component {
   }
 
   render() {
+    if(this.props.decks.length === undefined && this.state.decks.length === undefined){
+      return (
+        <View style={style.container}>
+        <View style={style.quizLayout}>
+        <Text style={style.quizFontStyle}>There are no decks available. Please add some</Text>     
+        </View>
+        </View>
+
+      )
+    }
     const deckList = this.state.decks;
 
     const numDecks = Object.keys(deckList).length;
+    console.log(numDecks)
     const listOfDecks = Object.keys(this.state.decks).map(key => {
       return this.state.decks[key];
     });
@@ -44,6 +55,7 @@ class ListDecks extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state.decks)
   return {
     decks: state.decks
   };

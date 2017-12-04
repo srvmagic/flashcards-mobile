@@ -23,9 +23,8 @@ export function addDeckAPI(title){
         title: title,
         questions: []
     }
-}), () => {
-  return AsyncStorage.getItem(types.DECK_STORAGE_KEY)
-})
+}))
+
 }
 export function addCardToDeckAPI(title, question, answer){
   return AsyncStorage.getItem(types.DECK_STORAGE_KEY)

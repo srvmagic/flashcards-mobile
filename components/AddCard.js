@@ -28,9 +28,9 @@ class AddCard extends Component {
     
     return (
 
-      <View style={{flex:1}}>
-      <View style={style.AddQuiz}>
-        <TextInput
+      <View style={style.container}>
+      <View style={style.quizLayout}>
+      <TextInput
          style={style.addCardInput}
           style={{height: 40}}
           placeholder="Type question here"
@@ -45,10 +45,10 @@ class AddCard extends Component {
           <TouchableOpacity
             onPress={this.submit}
             
-            style={style.addQuizItemButton}
+            style={style.aButton}
           >
-            <Text style={style.submitBtnText}>Submit</Text>
-          </TouchableOpacity>          
+            <Text style={style.quizText}>Submit</Text>
+          </TouchableOpacity>         
       </View>
       </View>
     );

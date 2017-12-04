@@ -8,6 +8,7 @@ import {
   Animated
 } from "react-native";
 import { style } from "../utils/style";
+import { clearLocalNotification } from "../utils/helpers";
 
 class Quiz extends Component {
   state = {
@@ -15,7 +16,10 @@ class Quiz extends Component {
     question: 1,
     score: 0
   };
-
+  componentDidMount(){
+    
+    clearLocalNotification()
+    } 
   render() {
     const totalNumberOfQuestions = this.props.navigation.state.params.questions
       .length;
@@ -43,7 +47,7 @@ class Quiz extends Component {
                 style={style.correctButton}
               >
                 <Text>
-                  {`The answer is: ${
+                  {`Answer: ${
                     questionList[this.state.question - 1].answer
                   }.`}
                 </Text>
@@ -57,7 +61,7 @@ class Quiz extends Component {
                 }
                 style={style.correctButton}
               >
-                <Text style={style.examButtonText}>Show Answer</Text>
+                <Text >Show Answer</Text>
               </TouchableOpacity>
             )}
 
@@ -69,9 +73,9 @@ class Quiz extends Component {
                   viewAnswer: false
                 })
               }
-              style={style.correctButton}
+              style={style.aButton}
             >
-              <Text style={style.examButtonText}>Corrent</Text>
+              <Text style={style.quizText}>Correct</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -81,18 +85,21 @@ class Quiz extends Component {
                   viewAnswer: false
                 })
               }
-              style={style.incorrectButton}
+              style={style.bButton}
             >
-              <Text style={style.examButtonText}>Incorrect</Text>
+              <Text style={style.quizText}>Incorrect</Text>
             </TouchableOpacity>
           </View>
         </View>
       );
     } else {
       return (
-        <View>
+        <View style={style.quizLayout}>
           <Text style={style.scoreHeading}>
-            End of Quiz - Here is your score {`${this.state.score}`} out of {`${totalNumberOfQuestions}`}
+            End of Quiz
+          </Text>
+          <Text >
+            Your Score {`${this.state.score}`} out of {`${totalNumberOfQuestions}`}
           </Text>
           <TouchableOpacity
             onPress={() => {
@@ -102,16 +109,16 @@ class Quiz extends Component {
                 viewAnswer: false
               });
             }}
-            style={style.correctButton}
+            style={style.aButton}
           >
-            <Text style={style.examButtonText}>Restart Quiz</Text>
+            <Text style={style.quizText}>Restart Quiz</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => this.props.navigation.goBack()}
-            style={style.correctButton}
+            style={style.aButton}
           >
-            <Text style={style.examButtonText}>Back to Deck</Text>
+            <Text style={style.quizText}>Back to Deck</Text>
           </TouchableOpacity>
         </View>
       );
@@ -119,12 +126,4 @@ class Quiz extends Component {
   }
 }
 
-function mapStateToProps(state, { navigation }) {
-  const { title } = navigation.state.params;
-
-  return {
-    deck: state[title]
-  };
-}
-
-export default connect(mapStateToProps)(Quiz);
+export default Quiz;

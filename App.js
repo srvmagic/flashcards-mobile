@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Provider } from 'react-redux';
 import configureStore from "./store/configureStore";
 import RootNavigator from "./navigation/RootNavigator";
+import { clearLocalNotification, setLocalNotification } from "./utils/helpers";
 
 const store = configureStore()
 store.dispatch(setDecks())
@@ -24,6 +25,10 @@ function AStatusBar({ backgroundColor, ...props }) {
 }
 
 export default class App extends React.Component {
+  componentDidMount(){
+  
+    setLocalNotification()
+  }  
   render() {
 
     return (

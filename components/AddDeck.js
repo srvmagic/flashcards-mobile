@@ -27,9 +27,9 @@ class AddDeck extends Component {
     
     return (
 
-      <View style={{flex:1}}>
-      <View style={style.AddDeck}>
-      <Text style={style.headingText}>What is the title of your new deck?</Text>
+      <View style={style.container}>
+      <View style={style.quizLayout}>
+      <Text style={style.quizFontStyle}>What is the title of your new deck?</Text>
         <TextInput
          style={style.inputStyle}
           style={{height: 40}}
@@ -39,9 +39,9 @@ class AddDeck extends Component {
           <TouchableOpacity
             onPress={this.submit}
             
-            style={style.submitBtnText}
+            style={style.aButton}
           >
-            <Text >Submit</Text>
+            <Text style={style.quizText}>Submit</Text>
           </TouchableOpacity>          
       </View>
       </View>

@@ -13,6 +13,7 @@ const RootStackNavigator = StackNavigator(
   {
     Main: {
       screen: TabNavigator,
+      navigationOptions : { ...navigationOptions, title: 'Quizlet' }
     },
     DeckDetail: {
       screen: DeckDetail,
@@ -37,6 +38,9 @@ const navigationOptions = {
   headerTitleStyle: {
     fontWeight: 'normal',
   },  
+  headerStyle: {
+    backgroundColor: colors.purple
+}  
 }
 
 export default class RootNavigator extends React.Component {

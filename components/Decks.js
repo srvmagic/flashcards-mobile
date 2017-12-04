@@ -9,8 +9,21 @@ import {
   Platform
 } from "react-native";
 import { style} from "../utils/style"
+import * as deckActions from "../actions/deckActions";
+import { connect } from "react-redux";
 
-export default class Decks extends Component {
+class Decks extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      decks: this.props.decks
+    };
+  }  
+  componentWillReceiveProps(nextProps) {
+    this.setState( {
+      decks: this.props.decks
+    })
+  }
   render() {
   
     const len = (this.props.questions && this.props.questions.length > 0) ? this.props.questions.length :0   
@@ -24,3 +37,12 @@ export default class Decks extends Component {
     );
   }
 }
+
+
+function mapStateToProps(state) {
+  return {
+    decks: state
+  };
+}
+
+export default connect(mapStateToProps, null)(Decks);

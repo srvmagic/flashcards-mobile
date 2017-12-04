@@ -9,8 +9,10 @@ export default function deckReducer(state = {}, action) {
     case types.LOAD_DECK_SUCCESS:
       return action.deck;
     case types.ADD_DECK_SUCCESS:
-    console.log(action.decks)
-    return action.decks
+    return [
+      ...state,
+      ...action.newDeck
+    ]
 
     default:
       return state;
