@@ -29,7 +29,7 @@ export function addDeckSuccess(newDeck) {
 }
 
 export function addDeck(title) {
-  const newDeck = {[title]: {title: title, questions:null}}
+  const newDeck = {[title]: {title: title, questions:[]}}
   return function(dispatch) {
     return addDeckAPI(title)
       .then(
@@ -41,10 +41,9 @@ export function addDeck(title) {
   };
 }
 
-export function setDecksSuccess(decks) {
+export function setDecksSuccess() {
   return {
-    type: types.SET_DECKS_SUCCESS,
-    decks
+    type: types.SET_DECKS_SUCCESS
   };
 }
 
@@ -54,7 +53,7 @@ export function setDecks() {
     setDecksAPI();
     return AsyncStorage.getItem(types.DECK_STORAGE_KEY)
       .then(decks => {
-        dispatch(setDecksSuccess(decks));
+        dispatch(setDecksSuccess());
       })
       .catch(error => {
         throw error;
