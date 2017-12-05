@@ -4,7 +4,6 @@ import decks from '../data/decks';
 
 export function getDecksAPI(){
     return AsyncStorage.getItem(types.DECK_STORAGE_KEY, ( result ) => {
-        console.log(result)
       return JSON.parse( result )
   })
 
@@ -12,9 +11,7 @@ export function getDecksAPI(){
 export function setDecksAPI(){
   
     AsyncStorage.setItem(types.DECK_STORAGE_KEY,JSON.stringify(decks))
-    return decks
-
-    
+  
 }
 export function getDeck(){
 
