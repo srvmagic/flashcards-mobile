@@ -1,7 +1,6 @@
 `import 'expo'`;
 import React, { Component } from "react";
 import { StyleSheet, Text, View, FlatList, Platform } from "react-native";
-import { blue } from "../utils/colors";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as deckActions from "../actions/deckActions";
@@ -33,11 +32,9 @@ class ListDecks extends Component {
     const deckList = this.state.decks;
 
     const numDecks = Object.keys(deckList).length;
-    console.log(numDecks)
     const listOfDecks = Object.keys(this.state.decks).map(key => {
       return this.state.decks[key];
     });
-
     return (
       <View style={style.container}> 
         {
@@ -55,7 +52,6 @@ class ListDecks extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.decks)
   return {
     decks: state.decks
   };

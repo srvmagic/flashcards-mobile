@@ -29,7 +29,7 @@ export function addDeckSuccess(newDeck) {
 }
 
 export function addDeck(title) {
-  const newDeck = {title, questions:[]}
+  const newDeck = {[title]: {title: title, questions:null}}
   return function(dispatch) {
     return addDeckAPI(title)
       .then(

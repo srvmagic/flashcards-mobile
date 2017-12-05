@@ -4,8 +4,10 @@ import decks from '../data/decks';
 
 export function getDecksAPI(){
     return AsyncStorage.getItem(types.DECK_STORAGE_KEY, ( result ) => {
+        console.log(result)
       return JSON.parse( result )
   })
+
 }
 export function setDecksAPI(){
   

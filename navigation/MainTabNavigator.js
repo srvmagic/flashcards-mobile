@@ -11,6 +11,7 @@ export default TabNavigator(
       screen: ListDecks,
       navigationOptions: {
           tabBarLabel: 'Decks',
+          fontWeight: 'bold',
       }
     },
     AddDeck: {

@@ -4,6 +4,10 @@ import * as colors from '../utils/colors';
 
 
 let quizStyle = {
+    mainContainer: {
+        flex: 1,
+        backgroundColor: "#fff"
+      },    
     container: {
         flex: 1,
         padding: 10

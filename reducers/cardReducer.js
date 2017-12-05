@@ -5,7 +5,7 @@ export default function cardReducer(state = {}, action) {
     case types.ADD_CARD_SUCCESS:
     let addedItem = { question: action.card.question, answer: action.card.answer}
     let deck = state[action.card.title];
-    deck.questions.push(addedItem);
+    //deck.questions.push(addedItem);
     return {
         ...state,
         [action.card.title]: deck
