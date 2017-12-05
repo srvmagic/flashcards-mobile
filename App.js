@@ -15,7 +15,8 @@ import * as colors from "./utils/colors";
 
 const store = configureStore();
 store.dispatch(setDecks());
-store.dispatch(loadDecks());
+// store.dispatch(loadDecks());
+
 
 function AStatusBar({ backgroundColor, ...props }) {
   return (

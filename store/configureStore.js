@@ -1,5 +1,7 @@
 import {createStore, applyMiddleware} from 'redux';
 import rootReducer from '../reducers/rootReducer'
+import * as types from "../actions/actionTypes";
+import { AsyncStorage } from 'react-native'
 
 import thunk from 'redux-thunk';
 import decks from '../data/decks';
@@ -8,6 +10,9 @@ import decks from '../data/decks';
 const defaultState = {
   decks
 };
+
+AsyncStorage.setItem(types.DECK_STORAGE_KEY,JSON.stringify(decks))
+
 
 export default function configureStore() {
   return createStore(
