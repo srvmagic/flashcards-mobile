@@ -65,6 +65,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 function mapStateToProps(state) {
-  return state
+  console.log('Add Deck')
+  console.log(state)
+  return {
+    decks: state.decks
+  };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AddDeck);

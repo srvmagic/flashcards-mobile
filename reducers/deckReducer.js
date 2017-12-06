@@ -17,19 +17,24 @@ export default function deckReducer(state = initialState, action) {
         ...action.deck
       };
     case types.ADD_CARD_SUCCESS:
-      const { title, question, answer } = action;
+    console.log('state.decks')
+    console.log(state)
+    const deckst = state || state.decks
+    console.log(deckst)
+      const title = action.title;
+      const question = action.question;
+      const answer = action.answer;
+
+      console.log(title)
+      
       const quizItem = { question, answer };
-      const index = findIndex(state, { title: title });
-      let targetDeck = state[index];
-      targetDeck.questions.push(quizItem);
-      return state.map((item, idx) => {
-        if(idx !== index) {
-          // This isn't the item we care about - keep it as-is
+      return deckst.map((item, idx) => {
+        if(title !== item.title) {
           return item;
       }     
       return {
         ...item,
-        ...targetDeck
+        ...item.questions.push(quizItem)
       }   
       })
     default:

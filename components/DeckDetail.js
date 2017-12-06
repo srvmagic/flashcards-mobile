@@ -10,20 +10,25 @@ import {
 } from "react-native";
 import { style } from "../utils/style";
 import { connect } from "react-redux";
+import { findIndex } from "lodash";
 
 class DeckDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      decks: this.props.decks
+      total: this.props.numberQ
     };
   }  
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      decks: nextProps.decks
-    });
-  
+
+    if (nextProps.numberQ !== undefined){
+      this.setState({
+        total: nextProps.numberQ || 0
+      });
+    }
+
+
 }
   render() {
     return (
@@ -33,7 +38,8 @@ class DeckDetail extends Component {
             {this.props.navigation.state.params.title}
           </Text>
           <Text style={style.detailText}>{`${
-            this.props.navigation.state.params.questionsNo
+            this.state.total
+            
           } card(s)`}</Text>
           <TouchableOpacity
             onPress={() =>
@@ -63,11 +69,18 @@ class DeckDetail extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  
-  
+function mapStateToProps(state, ownProps) {
+
+  let vv
+  const index = findIndex(state.decks, { title: ownProps.navigation.state.params.title });
+  if(index === -1){
+vv=0
+  }else {
+vv= state.decks[index].questions.length
+  }
+
   return {
-    decks: state.decks
+    numberQ: vv || ownProps.navigation.state.params.questionsNo
   };
 }
 

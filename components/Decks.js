@@ -41,7 +41,7 @@ class Decks extends Component {
 
 function mapStateToProps(state) {
   return {
-    decks: state
+    decks: state.decks
   };
 }
 
