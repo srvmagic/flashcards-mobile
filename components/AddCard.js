@@ -19,7 +19,7 @@ class AddCard extends Component {
 
   submit = (event) => {
     const { question, answer } = this.state;
-    this.props.actions.cardActions.addCard(this.props.navigation.state.params.title,question,answer)
+    this.props.actions.cardActions.addCard(this.props.navigation.state.params.title,question,answer)    
     this.props.navigation.goBack();
   }
   render() {

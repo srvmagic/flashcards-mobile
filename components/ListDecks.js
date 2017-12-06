@@ -25,9 +25,7 @@ class ListDecks extends Component {
 
   render() {
     console.disableYellowBox = true;
-    console.log('this.state.decks')
-    console.log(this.state.decks)
-    
+   
     if(this.state.decks.length === 0){
       return (
         <View style={style.container}>

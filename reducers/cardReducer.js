@@ -1,25 +1,20 @@
 import * as types from '../actions/actionTypes';  
+import initialState from "./initialState"
+import { findIndex } from 'lodash'
 
-export default function cardReducer(state = {}, action) {  
+export default function cardReducer(state = initialState, action) {  
+
   switch(action.type) {
     case types.ADD_CARD_SUCCESS:
-    let addedItem = { question: action.card.question, answer: action.card.answer}
-    // let deck = state[action.card.title];
-    // deck.questions.push(addedItem);
-    // return {
-    //     ...state,
-    //     [action.card.title]: deck
-    // }
+    const {title, question, answer} = action
+    const quizItem = {question, answer}
+    const index = findIndex(state.decks, {title: title});
+    let targetDeck = state.decks[index];
+    targetDeck.questions.push(quizItem);
     return {
-      ...state,
-      [action.card.title]: {
-        ...state[action.card.title],
-        questions: [
-          ...state[action.card.title].questions,
-          addedItem
-        ]
-      }
-    };
+        ...state,
+        [title]: targetDeck
+    }    
     default: 
       return state;
   }

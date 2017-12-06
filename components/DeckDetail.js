@@ -9,8 +9,22 @@ import {
   Platform
 } from "react-native";
 import { style } from "../utils/style";
+import { connect } from "react-redux";
 
-export default class DeckDetail extends Component {
+class DeckDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      decks: this.props.decks
+    };
+  }  
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      decks: nextProps.decks
+    });
+  
+}
   render() {
     return (
       <View style={style.container}>
@@ -48,3 +62,15 @@ export default class DeckDetail extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  console.log('*********************************')
+  console.log(state)
+
+  
+  return {
+    decks: state.decks
+  };
+}
+
+export default connect(mapStateToProps, null)(DeckDetail);

@@ -1,6 +1,7 @@
 import { AsyncStorage } from 'react-native'
 import * as types from '../actions/actionTypes';  
 import decks from '../data/decks';
+import { findIndex } from 'lodash'
 
 
 export function getDecksAPI(){
@@ -38,7 +39,8 @@ export function addCardToDeckAPI(title, question, answer){
   return AsyncStorage.getItem(types.DECK_STORAGE_KEY)
   .then(result => {
       const res = JSON.parse(result);
-      res[title].questions.push({question, answer});
+    var index = findIndex(res, {title: title});
+      res[index].questions.push({question, answer});     
       AsyncStorage.setItem(types.DECK_STORAGE_KEY, JSON.stringify(res));
   })
   .then(getDecksAPI())

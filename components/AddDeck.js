@@ -16,11 +16,19 @@ import * as deckActions from "../actions/deckActions";
 
 
 class AddDeck extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: ''
+    };
+  }
 
   submit = (event) => {
     this.props.actions.deckActions.addDeck(this.state.title)
     this.props.navigation.goBack();
-  }
+    this.setState(() => ({
+      title: ''
+  }))  }
   render() {
     const {state} = this.props.navigation;
 
