@@ -64,9 +64,7 @@ class DeckDetail extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('*********************************')
-  console.log(state)
-
+  
   
   return {
     decks: state.decks

@@ -59,7 +59,9 @@ class ListDecks extends Component {
   }
 }
 
+
 function mapStateToProps(state) {
+  console.log(state)
   return {
     decks: state.decks
   };

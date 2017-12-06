@@ -11,10 +11,14 @@ export default function cardReducer(state = initialState, action) {
     const index = findIndex(state.decks, {title: title});
     let targetDeck = state.decks[index];
     targetDeck.questions.push(quizItem);
-    return {
-        ...state,
-        [title]: targetDeck
-    }    
+
+    return [
+      ...state.decks.slice(0, index),
+      targetDeck,
+      ...state.decks.slice(index)
+
+  ]
+  
     default: 
       return state;
   }
