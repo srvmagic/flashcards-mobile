@@ -14,12 +14,21 @@ class ListDecks extends Component {
       decks: this.props.decks
     };
   }
+
   componentWillReceiveProps(nextProps) {
-    this.setState({ decks: this.props.decks });
+      this.setState({
+        decks: nextProps.decks
+      });
+    
   }
 
+
   render() {
-    if(this.props.decks.length === undefined && this.state.decks.length === undefined){
+    console.disableYellowBox = true;
+    console.log('this.state.decks')
+    console.log(this.state.decks)
+    
+    if(this.state.decks.length === 0){
       return (
         <View style={style.container}>
         <View style={style.quizLayout}>
@@ -31,12 +40,13 @@ class ListDecks extends Component {
     }
     const deckList = this.state.decks;
 
-    const numDecks = Object.keys(deckList).length;
+    const numDecks = Object.keys(this.state.decks).length;
     const listOfDecks = Object.keys(this.state.decks).map(key => {
       return this.state.decks[key];
     });
     return (
       <View style={style.container}> 
+
         {
           <FlatList
             data={listOfDecks}

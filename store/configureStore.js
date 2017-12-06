@@ -11,7 +11,6 @@ const defaultState = {
   decks
 };
 
-AsyncStorage.setItem(types.DECK_STORAGE_KEY,JSON.stringify(decks))
 
 export default function configureStore() {
   return createStore(

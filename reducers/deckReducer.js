@@ -3,14 +3,17 @@ import initialState from "./initialState"
 export default function deckReducer(state = initialState, action) {
   switch (action.type) {
     case types.LOAD_DECKS_SUCCESS:
-      return action.decks
+      return [{...action.decks}]
 
     case types.SET_DECKS_SUCCESS:
       return state;
     case types.LOAD_DECK_SUCCESS:
       return action.deck;
     case types.ADD_DECK_SUCCESS:
-    return {...state, ...action.newDeck}
+    return {
+        ...state,
+        ...action.deck
+    }    
     default:
       return state;
   }
