@@ -29,7 +29,6 @@ export function addDeckSuccess(deck) {
 }
 
 export function addDeck(title) {
-  const newDeck = {[title]: {title: title, questions:[]}}
   return function(dispatch) {
     return addDeckAPI(title)
       .then(deck =>{

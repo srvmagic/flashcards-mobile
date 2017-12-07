@@ -63,7 +63,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 function mapStateToProps(state) {
-  console.log(state)
   return state
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AddCard);

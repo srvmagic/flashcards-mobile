@@ -70,7 +70,6 @@ class DeckDetail extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-
   let vv
   const index = findIndex(state.decks, { title: ownProps.navigation.state.params.title });
   if(index === -1){

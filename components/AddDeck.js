@@ -65,8 +65,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 function mapStateToProps(state) {
-  console.log('Add Deck')
-  console.log(state)
   return {
     decks: state.decks
   };
